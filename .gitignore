@@ -1,0 +1,12 @@
+# ข้อมูลเรดาร์ดิบ — ห้าม commit (ลิขสิทธิ์ กรมอุตุนิยมวิทยา)
+*.uf
+*.uf.bz2
+*.uf.gz
+
+# ผลลัพธ์ชั่วคราว
+/figures/
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+ref_*.nc
+data/cache/
