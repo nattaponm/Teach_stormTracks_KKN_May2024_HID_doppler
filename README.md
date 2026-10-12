@@ -11,9 +11,9 @@
 
 ## บทเรียน (`notebooks/`)
 
-| บท | เนื้อหา | สถานะ |
+| บท | เนื้อหา | เปิดใน Colab |
 |---|---|---|
-| 01 | ฐานข้อมูลภัยพิบัติ เรขาคณิตเรดาร์ ดัชนีความรุนแรง จัดกลุ่มวัน | ✅ |
+| 01 | ฐานข้อมูลภัยพิบัติ เรขาคณิตเรดาร์ ดัชนีความรุนแรง จัดกลุ่มวัน | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nattaponm/Teach_stormTracks_KKN_May2024_HID_doppler/blob/main/notebooks/01_reports_radar_geometry_day_selection.ipynb) |
 | 02 | จาก CAPPI สู่วัตถุพายุ: ภาพรวมรายวันทั้งเดือน | รอข้อมูล derived |
 | 03 | T-DaTing กับการทดลอง Δt = 15 / 10 / 5 นาที | รอข้อมูล derived |
 | 04 | Cloud footprint และ zonal statistics กับ Z, Doppler, dual-pol, HID | รอข้อมูล derived |
@@ -22,9 +22,9 @@
 
 ## การเตรียมข้อมูล (`prep/`, สำหรับผู้ดูแลข้อมูล)
 
-| ขั้น | เนื้อหา | สถานะ |
+| ขั้น | เนื้อหา | เปิดใน Colab |
 |---|---|---|
-| P0 | สำรวจไฟล์ UF ทั้งเดือน: ช่องเวลา ไฟล์เสีย Nyquist พิกัดเรดาร์ ความพร้อมรายวัน | ✅ |
+| P0 | สำรวจไฟล์ UF ทั้งเดือน: ช่องเวลา ไฟล์เสีย Nyquist พิกัดเรดาร์ ความพร้อมรายวัน | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nattaponm/Teach_stormTracks_KKN_May2024_HID_doppler/blob/main/prep/P0_radar_inventory.ipynb) |
 | P1 | CAPPI ทุกวัน + ดัชนีความเคลื่อนไหวของพายุต่อ volume | ถัดไป |
 | P2 | Dealiasing, KDP, ZDR, HID, divergence, azimuthal shear, EDR → กริด 1 km | ถัดไป |
 | P3 | วัตถุ เส้นทาง (15/10/5 นาที) zonal stats และสรุปทั้งเดือน | ถัดไป |
@@ -50,7 +50,7 @@ assets/fonts/             ฟอนต์ Sarabun (SIL OFL 1.1) สำหรั�
 
 ## การใช้งานบน Colab
 
-เปิด notebook จาก GitHub ใน Colab แล้วรันเซลล์แรก ระบบจะ clone repo และติดตั้งไลบรารีให้ ครั้งแรกที่รันบท 01 จะสร้าง DEM 1 km จาก Copernicus GLO-90 อัตโนมัติ (2–5 นาที) ผู้ดูแลควร commit `data/gis/dem_kkn_1km.tif` เข้า repo หลังรันครั้งแรก
+กดปุ่ม **Open in Colab** ในตารางด้านบน (หรือที่หัวของแต่ละ notebook) แล้วรันเซลล์แรก ระบบจะ clone repo และติดตั้งไลบรารีให้ ครั้งแรกที่รันบท 01 จะสร้าง DEM 1 km จาก Copernicus GLO-90 อัตโนมัติ (2–5 นาที) ผู้ดูแลควร commit `data/gis/dem_kkn_1km.tif` เข้า repo หลังรันครั้งแรก
 
 ## แหล่งข้อมูลและสัญญาอนุญาต
 
