@@ -1,0 +1,69 @@
+# ค่าตั้งต้นของโครงการ — แก้ที่ไฟล์นี้ไฟล์เดียว ทุก notebook อ่านผ่าน utils.config.load_settings()
+
+project:
+  name: Teach_stormTracks_KKN_May2024_HID_doppler
+  year_ce: 2024
+  month: 5
+  tz_local: Asia/Bangkok          # UTC+7
+
+radar:
+  name: KKN
+  # ค่าโดยประมาณ — P0 จะอ่านพิกัดจริงจากไฟล์ UF แล้วเขียนทับไว้ที่ config/radar_site.json
+  lat: 16.46
+  lon: 102.79
+  alt_m: 200.0
+  lowest_elev_deg: 0.5
+  beamwidth_deg: 1.0
+  max_range_km: 240
+
+grid:
+  res_km: 1.0
+  half_width_km: 240              # กริด 481 x 481 จุด ศูนย์กลางที่เรดาร์
+
+geometry:
+  range_rings_km: [60, 120, 180, 240]
+  range_bins_km: [0, 100, 160, 240]   # ใช้แบ่งกลุ่มระยะ (สอดคล้องกับข้อค้นพบใน repo3)
+  admin_buffer_km: 300                # ขอบเขตการปกครองที่ตัดเก็บไว้ใน repo
+
+# ช่วงของเดือน: กรมอุตุนิยมวิทยาประกาศเข้าสู่ฤดูฝนวันที่ 21 พ.ค. 2567
+phases:
+  - {key: outbreak,  label_th: "ระลอกพายุฤดูร้อน",  label_en: "Pre-monsoon outbreak", start: "2024-05-01", end: "2024-05-09"}
+  - {key: late_pre,  label_th: "ปลายฤดูร้อน",       label_en: "Late pre-monsoon",     start: "2024-05-10", end: "2024-05-20"}
+  - {key: rainy,     label_th: "ต้นฤดูฝน",          label_en: "Early rainy season",   start: "2024-05-21", end: "2024-05-31"}
+
+reports:
+  excel: data/ข้อมูลพายุอีสานปี2024.xlsx
+  missing_code: 9999
+  # ชื่อที่สะกดต่างจากชั้นข้อมูลขอบเขต (ตรวจแล้วจาก NB01)
+  province_alias: {"นคราชสีมา": "นครราชสีมา"}
+  district_alias:
+    "สกลนคร|พรรณนานิคม": "พรรณานิคม"
+    "นครพนม|โพน": "โพนสวรรค์"            # เดือน มี.ค. — ควรตรวจกับข่าวต้นฉบับ
+    "ชัยภูมิ|หนองบัวระแวง": "หนองบัวระเหว"  # เดือน มี.ค. — กำกวม (อาจเป็นหนองบัวแดง)
+  # ช่วงเวลาท้องถิ่นของรายงานที่ระบุเป็นคำ (ชั่วโมง เริ่ม–สิ้นสุด; >24 = ข้ามวัน)
+  period_windows_local:
+    "ช่วงเช้า": [6, 12]
+    "ช่วงบ่าย": [12, 16]
+    "ช่วงเย็น": [16, 19]
+    "ช่วงค่ำ": [19, 22]
+    "ช่วงกลางคืน": [22, 30]
+    "ช่วงดึก": [22, 30]
+  exact_time_pad_min: [60, 60]      # รายงานที่ระบุเวลา: ขยายหน้าต่าง −60/+60 นาที
+
+radar_data:
+  # ใช้เฉพาะขั้นเตรียมข้อมูล (prep/) — ข้อมูล UF ไม่เผยแพร่
+  drive_raw_root: /content/drive/MyDrive/1radar/KKN
+  drive_derived_root: /content/drive/MyDrive/1radar/KKN_derived_v1
+  file_regex: '^(?P<site>[A-Z]{3})(?P<prod>\d{3})@(?P<ts>\d{12})\.uf(?P<comp>\.bz2|\.gz)?$'
+  product_code: "240"
+  nominal_step_min: 15
+  slot_tolerance_min: 3
+  small_file_ratio: 0.6             # เล็กกว่า 60% ของมัธยฐานรายวัน = สงสัยว่าไฟล์ไม่ครบ
+  core_window_utc: [5, 17]          # ช่วงพายุหลัก 12–24 น. เวลาไทย ใช้ประเมินความพร้อมของวัน
+  usable_min_coverage: 0.8
+  max_bridge_gap_min: 15            # ช่องว่างมากกว่านี้ = ตัดเส้นทาง (ไม่เชื่อมข้าม)
+
+dem:
+  source: copernicus_glo90          # หรือระบุ path_override เป็น GeoTIFF ของตนเอง
+  path_override: null
+  out: data/gis/dem_kkn_1km.tif

@@ -1,0 +1,13 @@
+# ไลบรารีสำหรับบทเรียน 01–06 (Colab มีบางตัวอยู่แล้ว)
+geopandas>=0.14
+pyogrio
+rasterio>=1.3
+pyproj
+shapely>=2.0
+pandas>=2.0
+numpy
+scipy
+matplotlib>=3.7
+pyyaml
+openpyxl
+pyarrow
