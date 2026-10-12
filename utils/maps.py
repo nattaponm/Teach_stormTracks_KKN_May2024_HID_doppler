@@ -29,7 +29,7 @@ def setup_style(base_size=9):
     for ttf in repo_path("assets", "fonts").glob("*.ttf"):
         font_manager.fontManager.addfont(str(ttf))
     mpl.rcParams.update({
-        "font.family": "Sarabun",
+        "font.family": ["Sarabun", "DejaVu Sans"],      # DejaVu เป็น fallback สำหรับอักขระพิเศษ (⁻¹, ², …)
         "font.size": base_size,
         "axes.titlesize": base_size + 1,
         "axes.labelsize": base_size,

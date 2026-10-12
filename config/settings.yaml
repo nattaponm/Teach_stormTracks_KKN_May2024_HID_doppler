@@ -62,6 +62,28 @@ radar_data:
   core_window_utc: [5, 17]          # ช่วงพายุหลัก 12–24 น. เวลาไทย ใช้ประเมินความพร้อมของวัน
   usable_min_coverage: 0.8
   max_bridge_gap_min: 15            # ช่องว่างมากกว่านี้ = ตัดเส้นทาง (ไม่เชื่อมข้าม)
+  p2_active_area35_km2: 20          # พื้นที่ pseudo-CAPPI ≥ 35 dBZ อย่างน้อยกี่ km²
+  p2_neighbor_slots: 1
+
+sounding:
+  # ไฟล์รวม 00 UTC (src=FM35) จาก repo Teaching_Sounding_SevereStorm_Korat
+  base_dataset_url: https://raw.githubusercontent.com/nattaponm/Teaching_Sounding_SevereStorm_Korat/main/korat_48431_sounding_20240301_20240531.csv.gz
+  primary_station: "48431"          # นครราชสีมา
+  fallback_station: "48407"         # อุบลราชธานี — ใช้เมื่อโคราชวันนั้นใช้ไม่ได้
+  # ลองดึงใหม่สำหรับวันที่ขาด/สั้น: (ชั่วโมง UTC, แหล่งข้อมูลใน archive ของ Wyoming)
+  retry_variants: [[0, "BUFR"], [12, "FM35"], [12, "BUFR"]]
+  fallback_variants: [[0, "FM35"], [0, "BUFR"]]
+
+tracking:
+  thr_dbz: 35                       # segment ที่มีพื้นที่ ≥ 35 dBZ อย่างน้อย min_area_km2 จึงติดตาม
+  min_area_km2: 20
+  tags: ["15min", "10min_linZ", "05min_linZ"]
+  min_life_min: 30                  # เส้นทางที่ใช้วิเคราะห์สถิติ (เหมือน repo3)
+
+release:
+  key_days: null                    # null = เลือกอัตโนมัติ (วันที่มีความเสียหายสูงสุด 3 วัน + วันช่วงฤดูฝนที่มีเส้นทางมากสุด)
+  repo_max_mb: 80
+  zenodo_sandbox: false
 
 dem:
   source: copernicus_glo90          # หรือระบุ path_override เป็น GeoTIFF ของตนเอง
