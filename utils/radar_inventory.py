@@ -84,21 +84,28 @@ def slot_table(df, s, year=2024, month=5):
 # ----------------------------------------------------------------- ขั้นที่ 2
 
 def read_metadata(path):
-    """เปิดไฟล์ UF (.bz2 ได้โดยตรง) แล้วคืน metadata ที่จำเป็นต่อการประมวลผล"""
+    """เปิดไฟล์ UF (บีบอัดแบบใดก็ได้ ดู utils/radar_io.py) แล้วคืน metadata ที่จำเป็นต่อการประมวลผล"""
+    import io
     import warnings
     warnings.filterwarnings("ignore")
     import pyart
+    from .radar_io import uf_bytes, magic_hex
 
+    info = {"path": path, "magic": "", "compression": ""}
     try:
-        radar = pyart.io.read_uf(path)
+        info["magic"] = magic_hex(path)
+        data, kind = uf_bytes(path)
+        info["compression"] = kind
+        radar = pyart.io.read_uf(io.BytesIO(data))
     except Exception as e:
-        return {"path": path, "read_ok": False, "error": f"{type(e).__name__}: {e}"[:200]}
+        return {**info, "read_ok": False, "error": f"{type(e).__name__}: {e}"[:200]}
     try:
-        ny = radar.instrument_parameters.get("nyquist_velocity", {}).get("data") if radar.instrument_parameters else None
+        ip = radar.instrument_parameters or {}
+        ny = ip.get("nyquist_velocity", {}).get("data")
         ny_sweep = [float(np.nanmedian(ny[radar.get_slice(i)])) for i in range(radar.nsweeps)] if ny is not None else []
         rng = radar.range["data"]
         return {
-            "path": path, "read_ok": True, "error": "",
+            **info, "read_ok": True, "error": "",
             "lat": float(radar.latitude["data"][0]), "lon": float(radar.longitude["data"][0]),
             "alt_m": float(radar.altitude["data"][0]),
             "nsweeps": int(radar.nsweeps), "nrays": int(radar.nrays), "ngates": int(radar.ngates),
@@ -110,7 +117,7 @@ def read_metadata(path):
             "scan_start": str(pyart.util.datetime_from_radar(radar)),
         }
     except Exception as e:
-        return {"path": path, "read_ok": False, "error": f"meta {type(e).__name__}: {e}"[:200]}
+        return {**info, "read_ok": False, "error": f"meta {type(e).__name__}: {e}"[:200]}
 
 
 def read_metadata_many(paths, cache_csv=None, workers=None, progress_every=100):
@@ -118,6 +125,8 @@ def read_metadata_many(paths, cache_csv=None, workers=None, progress_every=100):
     done = pd.DataFrame()
     if cache_csv and Path(cache_csv).exists():
         done = pd.read_csv(cache_csv)
+        if "read_ok" in done:
+            done = done[done["read_ok"] == True]  # noqa: E712  — ไฟล์ที่เคยอ่านไม่ได้ ลองอ่านใหม่ทุกครั้ง
         paths = [p for p in paths if p not in set(done["path"])]
     print(f"ต้องอ่าน {len(paths)} ไฟล์ (มีใน cache แล้ว {len(done)})")
     rows = []
@@ -139,6 +148,8 @@ def read_metadata_many(paths, cache_csv=None, workers=None, progress_every=100):
 def scan_strategies(meta_files):
     """รวมกลุ่มรูปแบบการสแกน (มุมยก + Nyquist + range) ที่ใช้ และช่วงเวลาที่ใช้"""
     m = meta_files[meta_files["read_ok"] == True].copy()  # noqa: E712
+    if m.empty:
+        return pd.DataFrame(columns=["n_files", "first", "last", "nsweeps", "gate_m"])
     m["strategy"] = m["elevs"].astype(str) + " | Vny " + m["nyquist"].astype(str) + " | " + m["max_range_km"].round(0).astype(str) + " km"
     g = m.groupby("strategy").agg(n_files=("path", "size"), first=("slot_utc", "min"), last=("slot_utc", "max"),
                                   nsweeps=("nsweeps", "first"), gate_m=("gate_m", "first"))
