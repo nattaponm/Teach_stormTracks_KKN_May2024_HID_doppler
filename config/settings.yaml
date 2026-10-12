@@ -52,8 +52,8 @@ reports:
 
 radar_data:
   # ใช้เฉพาะขั้นเตรียมข้อมูล (prep/) — ข้อมูล UF ไม่เผยแพร่
-  drive_raw_root: /content/drive/MyDrive/1radar/KKN
-  drive_derived_root: /content/drive/MyDrive/1radar/KKN_derived_v1
+  drive_raw_root: /content/drive/MyDrive/000_research/08Storm_NorthEast_FF69/0data/1radar/KKN
+  drive_derived_root: /content/drive/MyDrive/000_research/08Storm_NorthEast_FF69/0data/1radar/KKN_derived_v1
   file_regex: '^(?P<site>[A-Z]{3})(?P<prod>\d{3})@(?P<ts>\d{12})\.uf(?P<comp>\.bz2|\.gz)?$'
   product_code: "240"
   nominal_step_min: 15
