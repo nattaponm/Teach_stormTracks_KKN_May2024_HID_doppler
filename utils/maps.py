@@ -97,7 +97,7 @@ def add_range_rings(ax, s, rings_km=None, color="0.25", label=True, name=True):
         lw = 1.0 if r == s["radar"]["max_range_km"] else 0.5
         ax.plot(r * np.sin(th), r * np.cos(th), color=color, lw=lw, ls="-" if lw > 0.6 else "--", zorder=12)
         if label:
-            a = np.radians(35)
+            a = np.radians(325)   # มุมป้ายวงระยะ: ซ้ายบน ไม่ทับแผนที่ย่อและคำอธิบายสัญลักษณ์
             ax.text(r * np.sin(a), r * np.cos(a), f"{r} km", fontsize=7, color=color, ha="center", va="center",
                     zorder=13, bbox=dict(fc="white", ec="none", alpha=0.75, pad=0.6))
     ax.plot(0, 0, marker="^", ms=7, mfc="k", mec="white", mew=0.8, zorder=14)
