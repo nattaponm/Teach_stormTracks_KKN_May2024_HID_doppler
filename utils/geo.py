@@ -129,9 +129,10 @@ def dem_grid_profile(s, res_km=None, half_km=None):
                 transform=transform, nodata=np.nan, compress="deflate", predictor=3)
 
 
-def build_dem(s, out=None, url_template=COP_URL, half_km=260):
+def build_dem(s, out=None, url_template=COP_URL, half_km=260, resampling="average"):
     """สร้าง DEM 1 km ในพิกัด AEQD จาก Copernicus GLO-90 (AWS Open Data, ไม่ต้องลงทะเบียน)
-    ค่าในเซลล์ 1 km = ค่าเฉลี่ยของจุด 90 m ทั้งหมดในเซลล์ (resampling แบบ average)"""
+    resampling="average": ค่าในเซลล์ 1 km = ค่าเฉลี่ยของจุด 90 m (ใช้กับภูมิประเทศทั่วไป)
+    resampling="max":     ค่าสูงสุดในเซลล์ (ใช้คำนวณการบังลำคลื่น เพราะยอดเขาคือสิ่งที่บัง)"""
     import rasterio
     from rasterio.warp import reproject, Resampling
 
@@ -149,7 +150,7 @@ def build_dem(s, out=None, url_template=COP_URL, half_km=260):
                 with rasterio.open(url) as src:
                     tmp = np.full_like(dst, np.nan)
                     reproject(rasterio.band(src, 1), tmp, dst_transform=prof["transform"], dst_crs=prof["crs"],
-                              dst_nodata=np.nan, resampling=Resampling.average)
+                              dst_nodata=np.nan, resampling=getattr(Resampling, resampling))
             except Exception as e:  # ไทล์ที่ไม่มี (เช่น ทะเล) หรือเครือข่ายขัดข้อง
                 print(f"  ข้ามไทล์ {la},{lo}: {type(e).__name__}")
                 continue

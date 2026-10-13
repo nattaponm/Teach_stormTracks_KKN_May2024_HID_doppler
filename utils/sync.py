@@ -25,7 +25,7 @@ from .config import REPO_ROOT
 # ไฟล์/โฟลเดอร์ที่ prep สร้างแล้วต้องเข้า repo (ห้ามใส่ข้อมูลเรดาร์ดิบ)
 ITEMS = ("config/radar_site.json", "config/data_sources.yaml",
          "data/inventory", "data/reports", "data/sounding", "data/derived", "data/days",
-         "data/gis/dem_kkn_1km.tif")
+         "data/gis/dem_kkn_1km.tif", "data/gis/dem_kkn_1km_max.tif")
 MIRROR = "repo_mirror"
 SKIP_SUFFIX = (".uf", ".bz2", ".gz.part", ".pyc")
 
