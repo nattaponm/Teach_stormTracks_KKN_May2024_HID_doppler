@@ -91,3 +91,13 @@ dem:
   source: copernicus_glo90          # หรือระบุ path_override เป็น GeoTIFF ของตนเอง
   path_override: null
   out: data/gis/dem_kkn_1km.tif
+
+# P5: การสัมผัสภัย (GHSL) และการบังลำคลื่น
+exposure:
+  ghsl_cache_subdir: ghsl            # เก็บไฟล์ zip GHSL ทั้งโลกไว้ใน <drive_derived_root>/ghsl (ดาวน์โหลดครั้งเดียว)
+blockage:
+  elev_deg: 0.5                      # มุมยกต่ำสุดของ KKN
+  beamwidth_deg: 1.0                 # ความกว้างลำคลื่น (ค่าทั่วไปของเรดาร์ C-band)
+  threshold_bbf: 0.25                # BBF สะสม ≥ ค่านี้ = ถูกบังบางส่วน (ตัดออกในการวิเคราะห์เชิงพื้นที่)
+  dem_max: data/gis/dem_kkn_1km_max.tif   # DEM ค่าสูงสุดใน 1 km (สร้างใน P5) ใช้คำนวณการบัง
+
