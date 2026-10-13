@@ -34,8 +34,15 @@
 | P3 | แบ่งเหตุการณ์พายุทั้งเดือน → เส้นทาง T-DaTing 15/10/5 นาที (ต่อเนื่องข้ามวัน) footprint ตารางเซลล์/เส้นทาง สรุปกริดทั้งเดือน (ตรวจเทียบ repo3) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nattaponm/Teach_stormTracks_KKN_May2024_HID_doppler/blob/main/prep/P3_tracking_month.ipynb) |
 | P4 | checksum เลือกวันหลักเข้า repo (≤ 80 MB) สร้าง data_sources.yaml อัปโหลด Zenodo (draft) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nattaponm/Teach_stormTracks_KKN_May2024_HID_doppler/blob/main/prep/P4_package_release.ipynb) |
 
-**ลำดับการรัน (Colab Pro, CPU + High-RAM):** บท 01 → P0 → PS → P1 → P2 → P3 → P4 แล้วจึงให้นิสิตเรียนบท 01–06
+**ลำดับการรัน (Colab Pro, CPU + High-RAM):** P0 → บท 01 (`ADMIN_SYNC = True`) → PS → P1 → P2 → P3 → P4 (`COMMIT = True`) แล้วจึงให้นิสิตเรียนบท 01–06
 เวลาโดยประมาณ: P1 ไม่กี่นาที/วัน · P2 ≈ 11 วินาที/volume/core (เฉพาะช่วงมีพายุ) · P3 ≈ 1 ชม. ทั้งเดือน (8 core) ทุกขั้น **resume ได้** (ข้ามวันที่มีไฟล์ผลลัพธ์แล้ว) ผลลัพธ์ระหว่างทางเก็บใน Drive ที่ `radar_data.drive_derived_root` ใน `config/settings.yaml`
+
+### Colab แยกเครื่องต่อ notebook → ส่งต่อผลผ่าน Drive (`utils/sync.py`)
+แต่ละ notebook ใน Colab รันบนเครื่องเสมือนของตัวเอง ไฟล์ที่ P0 เขียนลงโฟลเดอร์ repo จึงไม่มีในเครื่องของบท 01 หรือ P4 และหายเมื่อปิด runtime ทุก notebook ใน `prep/` จึง
+- **ต้น notebook:** `sync.pull(OUT_ROOT)` ดึงผลของขั้นก่อนหน้าจาก `KKN_derived_v1/repo_mirror/` ใน Drive
+- **ท้าย notebook:** `sync.push(OUT_ROOT)` เก็บไฟล์ที่จะเข้า repo (`data/inventory`, `data/reports`, `data/sounding`, `data/derived`, `data/days`, `config/radar_site.json`, `config/data_sources.yaml`, DEM) กลับเข้า Drive — **รันเซลล์สุดท้ายทุกครั้งก่อนปิด runtime**
+- **commit:** ตั้ง `COMMIT = True` ในเซลล์สุดท้าย (แนะนำที่ P4 ครั้งเดียว) ใช้ fine-grained token ใน Colab Secrets ชื่อ `KKN_commit` (สิทธิ์ Contents: Read and write เฉพาะ repo นี้) — `sync.git_push` กรอง token ออกจากทุกข้อความที่พิมพ์
+- **บท 01 (ผู้ดูแล):** ตั้ง `ADMIN_SYNC = True` ในเซลล์ 🔒 เพื่อดึงผล P0 และเก็บ `data/reports` เข้า Drive (นิสิตปล่อยเป็น False)
 
 ### Sounding สำหรับ HID (PS)
 HID ต้องการโปรไฟล์อุณหภูมิถึง ≳ 12 km หากใช้โปรไฟล์ที่สั้น `np.interp` จะตรึงอุณหภูมิบนสุดไว้ทั้งคอลัมน์ ทำให้ชั้นน้ำแข็งหายไป กติการายวัน:
