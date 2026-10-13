@@ -20,6 +20,7 @@
 | 04 | Cloud footprint, zonal statistics, boxplot Z/Doppler/dual-pol/HID/EDR ตามกลุ่มอายุ + การทดสอบสถิติ | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nattaponm/Teach_stormTracks_KKN_May2024_HID_doppler/blob/main/notebooks/04_footprints_zonal_radar_variables.ipynb) |
 | 05 | ภูมิประเทศ (DEM) แหล่งกำเนิด ระยะเรดาร์ (ตัวกวน) จับคู่เส้นทางกับรายงานความเสียหาย | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nattaponm/Teach_stormTracks_KKN_May2024_HID_doppler/blob/main/notebooks/05_terrain_range_reports.ipynb) |
 | 06 | แผนที่ความถี่ KDE Moran's I, Getis–Ord Gi* สรุปรายตำบล/อำเภอ/จังหวัด ส่งออก GIS | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nattaponm/Teach_stormTracks_KKN_May2024_HID_doppler/blob/main/notebooks/06_spatial_frequency_admin.ipynb) |
+| 07 | พายุที่มีรายงานความเสียหาย vs ไม่มีรายงาน: ระดับความเสียหายจากจำนวนบ้าน (Weak/Moderate/Severe) dose–response, matched case–control, การสัมผัสภัย (GHSL) การบังลำคลื่น | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nattaponm/Teach_stormTracks_KKN_May2024_HID_doppler/blob/main/notebooks/07_damage_severity_vs_radar.ipynb) |
 
 นิสิตไม่ต้องเข้าถึงข้อมูลเรดาร์ดิบ: ทุกบทอ่านตารางทั้งเดือนและกริดของวันหลักจาก `data/` ใน repo ส่วนวันอื่นดาวน์โหลดจาก Zenodo อัตโนมัติผ่าน `utils.data.day_file()` (ตรวจ sha256)
 
@@ -33,9 +34,10 @@
 | P2 | Dealias, DIV, AZSHEAR, KDP, ZDR, Z-PHI, HID (Besic 2016), EDR เฉพาะช่วงมีพายุ → กริด 1 km (ตรวจเทียบ repo3) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nattaponm/Teach_stormTracks_KKN_May2024_HID_doppler/blob/main/prep/P2_polar_products_hid.ipynb) |
 | P3 | แบ่งเหตุการณ์พายุทั้งเดือน → เส้นทาง T-DaTing 15/10/5 นาที (ต่อเนื่องข้ามวัน) footprint ตารางเซลล์/เส้นทาง สรุปกริดทั้งเดือน (ตรวจเทียบ repo3) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nattaponm/Teach_stormTracks_KKN_May2024_HID_doppler/blob/main/prep/P3_tracking_month.ipynb) |
 | P4 | checksum เลือกวันหลักเข้า repo (≤ 80 MB) สร้าง data_sources.yaml อัปโหลด Zenodo (draft) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nattaponm/Teach_stormTracks_KKN_May2024_HID_doppler/blob/main/prep/P4_package_release.ipynb) |
+| P5 | GHSL (ประชากร/สิ่งปลูกสร้าง 1 km) เข้ากริดเรดาร์ DEM ค่าสูงสุด → beam blockage fraction (Bech 2003) ตรวจเทียบความถี่พายุตามมุม การสัมผัสภัยรายอำเภอ/รายเส้นทาง | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nattaponm/Teach_stormTracks_KKN_May2024_HID_doppler/blob/main/prep/P5_exposure_blockage.ipynb) |
 
-**ลำดับการรัน (Colab Pro, CPU + High-RAM):** P0 → บท 01 (`ADMIN_SYNC = True`) → PS → P1 → P2 → P3 → P4 (`COMMIT = True`) แล้วจึงให้นิสิตเรียนบท 01–06
-เวลาโดยประมาณ: P1 ไม่กี่นาที/วัน · P2 ≈ 11 วินาที/volume/core (เฉพาะช่วงมีพายุ) · P3 ≈ 1 ชม. ทั้งเดือน (8 core) ทุกขั้น **resume ได้** (ข้ามวันที่มีไฟล์ผลลัพธ์แล้ว) ผลลัพธ์ระหว่างทางเก็บใน Drive ที่ `radar_data.drive_derived_root` ใน `config/settings.yaml`
+**ลำดับการรัน (Colab Pro, CPU + High-RAM):** P0 → บท 01 (`ADMIN_SYNC = True`) → PS → P1 → P2 → P3 → P4 → P5 (`COMMIT = True`) แล้วจึงให้นิสิตเรียนบท 01–07
+เวลาโดยประมาณ: P1 ไม่กี่นาที/วัน · P2 ≈ 11 วินาที/volume/core (เฉพาะช่วงมีพายุ) · P3 ≈ 1 ชม. ทั้งเดือน (8 core) · P5 ≈ 10–15 นาที (ดาวน์โหลด GHSL ~450 MB ครั้งแรก เก็บ cache ใน Drive) ทุกขั้น **resume ได้** (ข้ามวันที่มีไฟล์ผลลัพธ์แล้ว) ผลลัพธ์ระหว่างทางเก็บใน Drive ที่ `radar_data.drive_derived_root` ใน `config/settings.yaml`
 
 ### Colab แยกเครื่องต่อ notebook → ส่งต่อผลผ่าน Drive (`utils/sync.py`)
 แต่ละ notebook ใน Colab รันบนเครื่องเสมือนของตัวเอง ไฟล์ที่ P0 เขียนลงโฟลเดอร์ repo จึงไม่มีในเครื่องของบท 01 หรือ P4 และหายเมื่อปิด runtime ทุก notebook ใน `prep/` จึง
@@ -75,6 +77,8 @@ HID ต้องการโปรไฟล์อุณหภูมิถึง 
 - เผยแพร่เฉพาะผลิตภัณฑ์บนกริด Cartesian 1 km (quantized int16) และตารางสรุป ไม่มีข้อมูลพิกัด polar
 - **ใน repo:** ตารางทั้งเดือน (`data/derived/`) + กริดของวันหลัก (`data/days/YYYYMMDD/`) รวม ≤ 80 MB
 - **ใน Zenodo (DOI):** กริดรายวันครบทั้งเดือน ลิงก์และ checksum อยู่ใน `config/data_sources.yaml` (สร้างโดย P4)
+- **GHSL (P5):** ประชากรและสิ่งปลูกสร้าง R2023A 1 km ของ European Commission JRC (CC BY 4.0) — Pesaresi & Politis (2023); Schiavina et al. (2023) ใน repo เก็บเฉพาะค่าที่แปลงเข้ากริดเรดาร์แล้ว (`data/derived/exposure_1km.nc`)
+- **ระดับความเสียหาย (บท 07):** กติกาทั้งหมดอยู่ใน `config/damage_rules.yaml` (เกณฑ์จำนวนบ้าน รายการที่ตัดออก ยอดรวมระดับจังหวัด การยกระดับเป็น Severe พร้อมข้อความหลักฐาน) แก้ไฟล์นี้แล้วรันบท 07 ใหม่ได้โดยไม่ต้องแก้โค้ด
 
 ## โครงสร้าง
 
