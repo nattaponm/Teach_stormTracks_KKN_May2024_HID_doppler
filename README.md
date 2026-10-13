@@ -31,11 +31,11 @@
 | PS | โปรไฟล์อุณหภูมิรายวันสำหรับ HID: โคราช 48431 → อุบล 48407 → เฉลี่ยวันข้างเคียง + ดัชนีสภาพแวดล้อม | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nattaponm/Teach_stormTracks_KKN_May2024_HID_doppler/blob/main/prep/PS_sounding_hid_profiles.ipynb) |
 | P1 | pseudo-CAPPI 2 km + Z สูงสุดในคอลัมน์ ทุก volume ทุกวัน (ตรวจเทียบ pysteps) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nattaponm/Teach_stormTracks_KKN_May2024_HID_doppler/blob/main/prep/P1_cappi_all_days.ipynb) |
 | P2 | Dealias, DIV, AZSHEAR, KDP, ZDR, Z-PHI, HID (Besic 2016), EDR เฉพาะช่วงมีพายุ → กริด 1 km (ตรวจเทียบ repo3) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nattaponm/Teach_stormTracks_KKN_May2024_HID_doppler/blob/main/prep/P2_polar_products_hid.ipynb) |
-| P3 | วัตถุพายุ เส้นทาง T-DaTing 15/10/5 นาที footprint ตารางเซลล์/เส้นทาง สรุปกริดทั้งเดือน (ตรวจเทียบ repo3) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nattaponm/Teach_stormTracks_KKN_May2024_HID_doppler/blob/main/prep/P3_tracking_month.ipynb) |
+| P3 | แบ่งเหตุการณ์พายุทั้งเดือน → เส้นทาง T-DaTing 15/10/5 นาที (ต่อเนื่องข้ามวัน) footprint ตารางเซลล์/เส้นทาง สรุปกริดทั้งเดือน (ตรวจเทียบ repo3) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nattaponm/Teach_stormTracks_KKN_May2024_HID_doppler/blob/main/prep/P3_tracking_month.ipynb) |
 | P4 | checksum เลือกวันหลักเข้า repo (≤ 80 MB) สร้าง data_sources.yaml อัปโหลด Zenodo (draft) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nattaponm/Teach_stormTracks_KKN_May2024_HID_doppler/blob/main/prep/P4_package_release.ipynb) |
 
 **ลำดับการรัน (Colab Pro, CPU + High-RAM):** บท 01 → P0 → PS → P1 → P2 → P3 → P4 แล้วจึงให้นิสิตเรียนบท 01–06
-เวลาโดยประมาณ: P1 ไม่กี่นาที/วัน · P2 ≈ 11 วินาที/volume/core (เฉพาะช่วงมีพายุ) · P3 ≈ 9 นาที/วัน (2 core) ทุกขั้น **resume ได้** (ข้ามวันที่มีไฟล์ผลลัพธ์แล้ว) ผลลัพธ์ระหว่างทางเก็บใน Drive ที่ `radar_data.drive_derived_root` ใน `config/settings.yaml`
+เวลาโดยประมาณ: P1 ไม่กี่นาที/วัน · P2 ≈ 11 วินาที/volume/core (เฉพาะช่วงมีพายุ) · P3 ≈ 1 ชม. ทั้งเดือน (8 core) ทุกขั้น **resume ได้** (ข้ามวันที่มีไฟล์ผลลัพธ์แล้ว) ผลลัพธ์ระหว่างทางเก็บใน Drive ที่ `radar_data.drive_derived_root` ใน `config/settings.yaml`
 
 ### Sounding สำหรับ HID (PS)
 HID ต้องการโปรไฟล์อุณหภูมิถึง ≳ 12 km หากใช้โปรไฟล์ที่สั้น `np.interp` จะตรึงอุณหภูมิบนสุดไว้ทั้งคอลัมน์ ทำให้ชั้นน้ำแข็งหายไป กติการายวัน:
@@ -58,7 +58,7 @@ HID ต้องการโปรไฟล์อุณหภูมิถึง 
 
 ### พารามิเตอร์หลัก
 - กริด AEQD 1 km 481×481 รัศมี 240 km รอบเรดาร์ (พิกัดจริงจาก UF → `config/radar_site.json`)
-- T-DaTing (เหมือน repo3): minref 33, maxref 45, mindiff 5, minsize 15 km², minmax 40, mindis 8 km, ติดตามแยกตามช่วงข้อมูลต่อเนื่อง (ไม่ข้ามช่องว่าง) เส้นทางที่แตะขอบช่วงถูกติดป้าย `censored`
+- T-DaTing (เหมือน repo3): minref 33, maxref 45, mindiff 5, minsize 15 km², minmax 40, mindis 8 km, ติดตามเป็น **เหตุการณ์พายุ (episode)** ไม่ใช่ทีละวัน: ต่อข้อมูลทั้งเดือนแล้วตัดเฉพาะที่ช่วงสงบ (พื้นที่ ≥ 35 dBZ < 20 km² ติดกัน ≥ 1 ชม.) หรือข้อมูลขาด เส้นทางจึงต่อเนื่องข้ามเที่ยงคืน UTC (07:00 น.) ได้ (ทดสอบด้วยข้อมูลเลื่อนเวลาให้คร่อมเที่ยงคืน: ตรงกับการติดตามต่อเนื่อง 164/164 เส้น) `uid` = `E###-####`, `day` = วันที่ UTC ของจุดเริ่ม, `day_local` = วันที่เวลาไทย, `censored` = แตะขอบเหตุการณ์ที่ติดข้อมูลขาด/ขอบเดือน
 - Δt: `15min` (ข้อมูลจริง), `10min_linZ`, `05min_linZ` (advection interpolation)
 - ตัวแปร polar: Zc, vel, div, azshear (s⁻¹), edr, kdp, zdr, HID 4 ชั้นความสูง, hail/graupel column
 
