@@ -1,0 +1,4 @@
+tag,episodes,days,tracks,life>=30min,life>=60min,crosses_00utc,censored,max_life_min
+15min,33,30,4423,2325,688,26,4,270.0
+10min_linZ,33,30,5097,2298,817,23,4,280.0
+05min_linZ,33,30,7074,2422,806,29,5,365.0

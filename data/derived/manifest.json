@@ -1,0 +1,34 @@
+{
+ "created_utc": "2026-10-13T05:06:47.026973+00:00",
+ "n_files": 151,
+ "total_mb": 414.918,
+ "key_days_in_repo": [
+  "2024-05-03",
+  "2024-05-05",
+  "2024-05-06",
+  "2024-05-22"
+ ],
+ "derived_tables": [
+  "cells_05min_linZ.csv.gz",
+  "cells_10min_linZ.csv.gz",
+  "cells_15min.csv.gz",
+  "day_index.csv",
+  "episodes.csv",
+  "footprints_05min_linZ.gpkg",
+  "footprints_10min_linZ.gpkg",
+  "footprints_15min.gpkg",
+  "hid_sensitivity_20240503.csv",
+  "manifest.json",
+  "monthly_summary_1km.nc",
+  "terrain_1km.nc",
+  "tracking_summary.csv",
+  "tracks_05min_linZ.csv",
+  "tracks_10min_linZ.csv",
+  "tracks_15min.csv",
+  "volume_metrics_p2.csv",
+  "volume_stats_p1.csv"
+ ],
+ "processing": "prep/P0–P4 (Teach_stormTracks_KKN_May2024_HID_doppler)",
+ "license": "CC BY 4.0",
+ "radar_data_credit": "Thai Meteorological Department (KKN); UF files not distributed"
+}
