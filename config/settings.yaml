@@ -75,8 +75,10 @@ sounding:
   fallback_variants: [[0, "FM35"], [0, "BUFR"]]
 
 tracking:
-  thr_dbz: 35                       # segment ที่มีพื้นที่ ≥ 35 dBZ อย่างน้อย min_area_km2 จึงติดตาม
+  thr_dbz: 35                       # ภาพที่มีพื้นที่ ≥ 35 dBZ อย่างน้อย min_area_km2 = "มีพายุ"
   min_area_km2: 20
+  episode_quiet_min: 60             # ช่วงสงบ (ไม่มีพายุ) ติดกันอย่างน้อยเท่านี้ → ตัดเป็นคนละเหตุการณ์ (ไม่ตัดที่เที่ยงคืน)
+  episode_pad_frames: 2             # เผื่อภาพก่อน/หลังช่วงมีพายุ (2 ภาพ = 30 นาที)
   tags: ["15min", "10min_linZ", "05min_linZ"]
   min_life_min: 30                  # เส้นทางที่ใช้วิเคราะห์สถิติ (เหมือน repo3)
 
