@@ -68,7 +68,16 @@ def scan_day(cappi_path, polar_path=None, thr_dbz=35.0):
     ge35 = np.nan_to_num(Z, nan=-99) >= thr_dbz
     area = ge35.sum(axis=(1, 2)).astype(float)
     area[~av] = np.nan
-    out = {"times": pd.to_datetime(list(mt["timestamps"])), "available": av, "area": area,
+    import xarray as xr
+    with xr.open_dataset(str(cappi_path)) as ds:                      # Z สูงสุดในคอลัมน์ (P1) → ใช้ตรวจลูกเห็บปลอม
+        zc = ds["zmax_column"].values if "zmax_column" in ds else None
+        flip = ds["y"].values[0] < ds["y"].values[-1]
+    if zc is not None:
+        zc = zc[:, ::-1] if flip else zc
+        ncol35 = (np.nan_to_num(zc[av], nan=-99) >= thr_dbz).sum(0).astype(np.int32)
+    else:
+        ncol35 = ge35[av].sum(0).astype(np.int32)
+    out = {"times": pd.to_datetime(list(mt["timestamps"])), "available": av, "area": area, "ncol35": ncol35,
            "n_obs": int(av.sum()), "freq35": ge35[av].sum(0).astype(np.int32),
            "freq45": (np.nan_to_num(Z[av], nan=-99) >= 45).sum(0).astype(np.int32)}
     hail = np.zeros(Z.shape[1:], np.int32)
@@ -302,3 +311,35 @@ def merge_label_parts(parts_dir, out_dir, day, tag, meta, attrs=None, remove=Tru
         for p in parts:
             p.unlink()
     return out
+
+
+# ======================================================================
+# 4) หน้ากากลูกเห็บปลอม (clutter / สัญญาณรบกวน)
+# ======================================================================
+def hail_artifact_mask(hail_count, n35_count, min_count=3, ratio=2.0, dilate=1):
+    """pixel ที่ "ลูกเห็บในคอลัมน์" ถี่เกินกว่าที่พายุจะอธิบายได้
+
+    ลูกเห็บต้องมาพร้อม echo แรงในคอลัมน์ ดังนั้นจำนวน volume ที่มีลูกเห็บไม่ควรเกินจำนวน volume ที่
+    **Z สูงสุดในคอลัมน์ ≥ 35 dBZ** (``n35_count``, จาก zmax_column ของ P1) มากนัก
+    artifact = hail_count > max(min_count, ratio × n35_count) แล้วขยายขอบ ``dilate`` pixel
+    ใช้ Z คอลัมน์ ไม่ใช้ CAPPI 2 km เพราะพายุจริงที่ลูกเห็บอยู่ชั้นบนอาจมี Z ที่ 2 km < 35 dBZ (ทดสอบ 3 พ.ค.: เกณฑ์ CAPPI
+    จับพายุจริง 3 pixel, เกณฑ์ Z คอลัมน์ 0 pixel)
+    (KKN พ.ค. 2567: กลุ่ม pixel ระยะ 227–238 km มุม 254–255° ลูกเห็บ 15–24 volume ขณะที่ CAPPI ≥ 35 dBZ เพียง ~3 volume)
+    """
+    from scipy.ndimage import binary_dilation
+    h = np.nan_to_num(np.asarray(hail_count, float))
+    n = np.nan_to_num(np.asarray(n35_count, float))
+    m = h > np.maximum(min_count, ratio * n)
+    return binary_dilation(m, iterations=dilate) if dilate and m.any() else m
+
+
+def mask_polygons(mask, meta):
+    """หน้ากาก (แถวแรก = เหนือ) → GeoDataFrame polygon ใน CRS ของกริด"""
+    import geopandas as gpd
+    import rasterio.features
+    from rasterio.transform import from_origin
+    from shapely.geometry import shape as _shape
+    tr = from_origin(meta["x1"], meta["y2"], meta["xpixelsize"], meta["ypixelsize"])
+    m = np.asarray(mask, "uint8")
+    geoms = [_shape(g) for g, v in rasterio.features.shapes(m, mask=m > 0, transform=tr)]
+    return gpd.GeoDataFrame(geometry=geoms, crs=meta["projection"])

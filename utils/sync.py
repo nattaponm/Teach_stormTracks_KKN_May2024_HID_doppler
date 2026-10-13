@@ -155,8 +155,8 @@ def git_push(message, paths=ITEMS, secret_name="KKN_commit", owner="nattaponm",
 
     ensure_gitignore()
     git("config", "user.name", user_name, show=False)
-    if user_email:
-        git("config", "user.email", user_email, show=False)
+    # เครื่อง Colab ไม่มีอีเมลผู้ commit → ใช้อีเมล noreply ของ GitHub (ไม่เปิดเผยอีเมลจริงใน commit สาธารณะ)
+    git("config", "user.email", user_email or f"{user_name}@users.noreply.github.com", show=False)
     existing = [p for p in (".gitignore",) + tuple(paths) if (REPO_ROOT / p).exists()]
     git("add", "--", *existing)
     st = git("diff", "--cached", "--name-status", show=False)      # เฉพาะไฟล์ที่ staged จริง
