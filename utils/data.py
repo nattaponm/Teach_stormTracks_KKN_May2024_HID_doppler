@@ -32,7 +32,7 @@ def table(name):
     if name.endswith(".gpkg"):
         import geopandas as gpd
         return gpd.read_file(p)
-    parse = [c for c in ("day", "time", "start", "end", "slot_utc", "date") if c in pd.read_csv(p, nrows=0).columns]
+    parse = [c for c in ("day", "day_local", "time", "start", "end", "slot_utc", "date") if c in pd.read_csv(p, nrows=0).columns]
     return pd.read_csv(p, parse_dates=parse)
 
 

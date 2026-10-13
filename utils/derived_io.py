@@ -147,11 +147,11 @@ def write_polar_day(path, times, grids, site, attrs=None):
 
 # ----------------------------------------------------------------------------- P3
 def write_labels(path, labels, times, observed, meta, attrs=None):
-    ds = xr.Dataset({"label": (("time", "y", "x"), labels.astype(np.int16)),
+    ds = xr.Dataset({"label": (("time", "y", "x"), labels.astype(np.int32)),
                      "observed": ("time", np.asarray(observed, np.uint8))},
                     coords={"time": pd.to_datetime(list(times)), "y": meta["y"], "x": meta["x"]},
                     attrs={"projection": meta["projection"], "yorigin": "upper",
-                           "label_meaning": "track_id + 1 (0 = no cell); track_id is unique within the day", **(attrs or {})})
+                           "label_meaning": "track_id + 1 (0 = no cell); track_id = episode*10000 + k, unique within the month", **(attrs or {})})
     return _write(ds, path, {"label": {"zlib": True, "complevel": 5, "chunksizes": (1,) + labels.shape[1:]},
                              "time": {"units": "minutes since 1970-01-01 00:00:00", "dtype": "int64"}})
 
