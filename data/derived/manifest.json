@@ -1,7 +1,10 @@
 {
- "created_utc": "2026-10-13T05:06:47.026973+00:00",
+ "created_utc": "2026-10-15T08:27:02.503641+00:00",
  "n_files": 151,
+ "n_zenodo_files": 64,
  "total_mb": 414.918,
+ "zenodo_record": "23333709",
+ "doi": "10.5281/zenodo.23333709",
  "key_days_in_repo": [
   "2024-05-03",
   "2024-05-05",
@@ -9,11 +12,14 @@
   "2024-05-22"
  ],
  "derived_tables": [
+  "blockage_azimuth.csv",
   "cells_05min_linZ.csv.gz",
   "cells_10min_linZ.csv.gz",
   "cells_15min.csv.gz",
   "day_index.csv",
+  "district_exposure.csv",
   "episodes.csv",
+  "exposure_1km.nc",
   "footprints_05min_linZ.gpkg",
   "footprints_10min_linZ.gpkg",
   "footprints_15min.gpkg",
@@ -21,6 +27,9 @@
   "manifest.json",
   "monthly_summary_1km.nc",
   "terrain_1km.nc",
+  "track_exposure_05min_linZ.csv",
+  "track_exposure_10min_linZ.csv",
+  "track_exposure_15min.csv",
   "tracking_summary.csv",
   "tracks_05min_linZ.csv",
   "tracks_10min_linZ.csv",
