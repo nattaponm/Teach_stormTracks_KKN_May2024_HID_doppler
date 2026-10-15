@@ -3,11 +3,15 @@
 ตาราง/กริดสรุปทั้งเดือนอยู่ใน ``data/derived/`` ของ repo เสมอ
 กริดรายวัน (CAPPI, polar, labels) ของ "วันหลัก" อยู่ใน ``data/days/YYYYMMDD/``
 วันอื่นดาวน์โหลดจาก Zenodo ตาม ``config/data_sources.yaml`` แล้วเก็บไว้ใน ``data/cache/``
+
+Zenodo รับได้ไม่เกิน 100 ไฟล์ต่อ record จึงเก็บ CAPPI/polar เป็นไฟล์รายวัน (61 ไฟล์)
+และรวม labels ของแต่ละ Δt ไว้ใน zip เดียว (3 ไฟล์) — ``day_file`` แตก zip ให้อัตโนมัติ
 """
 from __future__ import annotations
 
 import hashlib
 import urllib.request
+import zipfile
 from pathlib import Path
 
 import pandas as pd
@@ -60,21 +64,38 @@ def day_file(day, kind="cappi_15min"):
     cache = repo_path("data", "cache", name)
     if cache.exists():
         return cache
-    src = sources()
-    files = (src.get("zenodo") or {}).get("files", {})
-    rec = (src.get("zenodo") or {}).get("record_id")
-    if not rec or name not in files:
+    zen = sources().get("zenodo") or {}
+    rec, files, archives = zen.get("record_id"), zen.get("files") or {}, zen.get("archives") or {}
+    arc = next((a for a, m in archives.items() if name in (m.get("members") or [])), None)
+    if not rec or (name not in files and arc is None):
         raise FileNotFoundError(f"{name} ไม่มีใน repo และยังไม่ได้ระบุบน Zenodo (config/data_sources.yaml)")
-    base = "https://sandbox.zenodo.org" if src["zenodo"].get("sandbox") else "https://zenodo.org"
-    url = f"{base}/records/{rec}/files/{name}?download=1"
+    base = "https://sandbox.zenodo.org" if zen.get("sandbox") else "https://zenodo.org"
     cache.parent.mkdir(parents=True, exist_ok=True)
-    print(f"ดาวน์โหลด {name} จาก Zenodo ({files[name].get('mb', '?')} MB) ...")
-    urllib.request.urlretrieve(url, cache)
-    want = files[name].get("sha256")
+    if name in files:
+        _download(f"{base}/records/{rec}/files/{name}?download=1", cache, files[name])
+        return cache
+    # ไฟล์อยู่ใน zip: ดาวน์โหลดทั้ง zip ครั้งเดียว แล้วแตกทุกวันลง data/cache/
+    zpath = repo_path("data", "cache", arc)
+    if not zpath.exists():
+        _download(f"{base}/records/{rec}/files/{arc}?download=1", zpath, archives[arc])
+    with zipfile.ZipFile(zpath) as z:
+        z.extractall(cache.parent)
+    want = (archives[arc].get("member_sha256") or {}).get(name)
     if want and _sha256(cache) != want:
         cache.unlink()
-        raise IOError(f"checksum ของ {name} ไม่ตรง — ลองใหม่อีกครั้ง")
+        raise IOError(f"checksum ของ {name} ใน {arc} ไม่ตรง — ลบ data/cache/{arc} แล้วลองใหม่")
     return cache
+
+
+def _download(url, dst, meta):
+    print(f"ดาวน์โหลด {dst.name} จาก Zenodo ({meta.get('mb', '?')} MB) ...")
+    tmp = dst.with_suffix(dst.suffix + ".part")
+    urllib.request.urlretrieve(url, tmp)
+    want = meta.get("sha256")
+    if want and _sha256(tmp) != want:
+        tmp.unlink()
+        raise IOError(f"checksum ของ {dst.name} ไม่ตรง — ลองใหม่อีกครั้ง")
+    tmp.rename(dst)
 
 
 def load_cappi(day):
