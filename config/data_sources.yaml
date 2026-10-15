@@ -1,0 +1,390 @@
+# แหล่งข้อมูลรายวันบน Zenodo (record 23333709, DOI 10.5281/zenodo.23333709)
+# files    = CAPPI/polar รายวัน (ดาวน์โหลดทีละไฟล์)
+# archives = labels รวมเป็น zip ละ Δt (Zenodo จำกัด 100 ไฟล์ต่อ record); utils/data.py แตก zip ให้อัตโนมัติ
+# หมายเหตุ: 28 พ.ค. 2024 มีเฉพาะ CAPPI (ไม่มี polar/labels)
+zenodo:
+  record_id: '23333709'
+  doi: 10.5281/zenodo.23333709
+  url: https://zenodo.org/records/23333709
+  sandbox: false
+  license: CC-BY-4.0
+  files:
+    KKN_20240501_cappi_15min.nc:
+      mb: 1.493
+      sha256: c2e5be044234c4cc77a7e5f8fc26567a49fb0e4bda4ce42ebdd2bf6bc308ea56
+    KKN_20240502_cappi_15min.nc:
+      mb: 1.506
+      sha256: 164a9588918c919707262f6e7130860c15b29962f9e76d769373abd57d623ffe
+    KKN_20240503_cappi_15min.nc:
+      mb: 3.092
+      sha256: f71f88f729ba80d24be6730b3c54c2528b1a5997f48e1a81caeded340e3907e1
+    KKN_20240504_cappi_15min.nc:
+      mb: 2.388
+      sha256: 673b1ee81fac94e056cb5e651bbad3334ce698d37f264a0bedd022ed56c5fac4
+    KKN_20240505_cappi_15min.nc:
+      mb: 2.854
+      sha256: b735b2870bbb710ea2099d3a32b43012ec39db984abd34023c95d74b9e445379
+    KKN_20240506_cappi_15min.nc:
+      mb: 5.303
+      sha256: 0ef33959cca4db1e51071a1ff5c1655702ca0fa8bdc6230e2cde6a7b4c5056a6
+    KKN_20240507_cappi_15min.nc:
+      mb: 2.674
+      sha256: 0bb3abd9bbc92598bbc220ce413df67589576c8f59a701c2317c1560996eaee1
+    KKN_20240508_cappi_15min.nc:
+      mb: 3.115
+      sha256: 9d32f0f3fc3f05287c4fe07fcd41fbea389d9271ef73bedf138b780694f93c30
+    KKN_20240509_cappi_15min.nc:
+      mb: 4.098
+      sha256: 4f3f132ca8ee5ea7091d28cfac887c1b1e2c25bed5c455a9008c7274f8d78a62
+    KKN_20240510_cappi_15min.nc:
+      mb: 7.368
+      sha256: 127fc76bef97a52f7d05b578b6ac013ca504dc0ed3cae2f3c7949608adb0b1e5
+    KKN_20240511_cappi_15min.nc:
+      mb: 3.679
+      sha256: 2e73666ff16bac6203f6ad1528362f1e59056d29ba71509b38faad432ae7c830
+    KKN_20240512_cappi_15min.nc:
+      mb: 2.498
+      sha256: 547cf2c788e1449d02d573bb5dd5d345b5759c84c88c8c8424060d62f14e3196
+    KKN_20240513_cappi_15min.nc:
+      mb: 7.285
+      sha256: 3656e3d2271e4f980088b036ef7d4cb978de4eae3451a3cd136764fed3af3631
+    KKN_20240514_cappi_15min.nc:
+      mb: 1.383
+      sha256: 7ec16e3a4aa83ffd4681f2ea3f2253bbe76fa7560c0ccbe92c5a7bddae85a8fa
+    KKN_20240515_cappi_15min.nc:
+      mb: 2.763
+      sha256: e487bb3ac51dbb06311c853b98f8d0dbe3f7d8b0d2c1c7ac8145c1c2de40d8ca
+    KKN_20240516_cappi_15min.nc:
+      mb: 2.966
+      sha256: acb3eed9a1ab32d54bcf79bdd80bb533ea19c96a755c1be20ab7a1c21c5f6d63
+    KKN_20240517_cappi_15min.nc:
+      mb: 4.309
+      sha256: d13d8e6377db8fef082347f65fc7acfd51492962ee1698c8174f2b5612539ebc
+    KKN_20240518_cappi_15min.nc:
+      mb: 2.425
+      sha256: 7b93d6f803cdf6e053d4071ad7991bf305ba2a223bf3b842a4a4199ea6443a09
+    KKN_20240519_cappi_15min.nc:
+      mb: 3.941
+      sha256: 7a41e50caaca7f9128a8626f9af52c431a3fe8921347ca0366a39ecba4cd2da7
+    KKN_20240520_cappi_15min.nc:
+      mb: 7.304
+      sha256: 3a3768329382c1393c7264401dc618df5839de4da6aa85857b7546a335c6480d
+    KKN_20240521_cappi_15min.nc:
+      mb: 5.895
+      sha256: c1b3635a7b1f913b79b60126756be7a004120e9dcd86f23c8ce3f0ea5f580fa1
+    KKN_20240522_cappi_15min.nc:
+      mb: 5.64
+      sha256: 24315a35633da5ed6da4b2058239faaac390058b633190069580d93801c9db6d
+    KKN_20240523_cappi_15min.nc:
+      mb: 12.454
+      sha256: adb3c1ed614725c1784fda5a88ed0a191ffbc1eba2f6128529281195e661364e
+    KKN_20240524_cappi_15min.nc:
+      mb: 7.149
+      sha256: caedd200570d6157d4413516506f8a79d46c30b2cc31b31a2f0b69fa8e036963
+    KKN_20240525_cappi_15min.nc:
+      mb: 3.921
+      sha256: fa0b7bd5fd641d32f2c57cd0a7616aff3ae708e389e49d001eb23d5345d5dd7a
+    KKN_20240526_cappi_15min.nc:
+      mb: 1.94
+      sha256: 09876d2d4af38e6c1c02a6ad1fa9a2b9ecbbf84e902a6dcb4bd9fb31f8325c1a
+    KKN_20240527_cappi_15min.nc:
+      mb: 2.033
+      sha256: b4591c5e88a4f33c62b9b17f39511a9bb2057dcdbe70009c78b586bda0d2a6c9
+    KKN_20240528_cappi_15min.nc:
+      mb: 1.791
+      sha256: e6396f4245f34cd8de49e23c29615b39ea72c484e30b8ab4ff5c085fb9bc007e
+    KKN_20240529_cappi_15min.nc:
+      mb: 2.687
+      sha256: 0ffdf9a2bd6205637aaf4c77291f0d35bf051a5a4eb998447e2bee819be01006
+    KKN_20240530_cappi_15min.nc:
+      mb: 2.62
+      sha256: 65bdd777b88bc5956867bc99c845835003bfe59c93bd0b8563ed9f4b8fb8993d
+    KKN_20240531_cappi_15min.nc:
+      mb: 5.286
+      sha256: f0c3ae20cf0808fbe866decd91d82d419bc30669dbfd7fc059f73c860d46b15f
+    KKN_20240501_polar_15min.nc:
+      mb: 0.95
+      sha256: a8950ae74b7c23385ab6836d73bc7ed6f22cb64767fd208ce518987ab1083d6f
+    KKN_20240502_polar_15min.nc:
+      mb: 1.13
+      sha256: d3d7d9552e1347be8644a0f7b167d8c08061424ba7653171ced3763e6922d5e3
+    KKN_20240503_polar_15min.nc:
+      mb: 5.962
+      sha256: 53962bbf8321f01cdbc61d8a36833fb9ff38af9ef133f39e8915832c27bd2373
+    KKN_20240504_polar_15min.nc:
+      mb: 3.426
+      sha256: 0d5b674af004f6b02eb3152f7d10034195f743505500cfd0d693038d5de8824a
+    KKN_20240505_polar_15min.nc:
+      mb: 4.685
+      sha256: 327fcae084dac04fc86468be32c426cfbcb067c24e058355f4fabb9a21399df6
+    KKN_20240506_polar_15min.nc:
+      mb: 13.249
+      sha256: 59388c9c690e6b60fa887e5a7ebfe59a2f766436d25b125195ec0c2746d10d2e
+    KKN_20240507_polar_15min.nc:
+      mb: 4.01
+      sha256: ac6d7a39621428193bdd048b021d82e91696c4c27b17e03035bc249adaaca7f1
+    KKN_20240508_polar_15min.nc:
+      mb: 5.815
+      sha256: e8985e1b953e86a118b1d4e03f5e306c5924344acac2476de974367410710ac1
+    KKN_20240509_polar_15min.nc:
+      mb: 9.062
+      sha256: 1beea0d6e2e7c81f8c2a60f830bb3acac2efbfd8611f28cf4514f695e188c36d
+    KKN_20240510_polar_15min.nc:
+      mb: 20.027
+      sha256: 54eb7617d569a9f5fecc71de21d136943086191eb6699c7aba97aef7a25f41ce
+    KKN_20240511_polar_15min.nc:
+      mb: 6.498
+      sha256: 758fb8b046d847b239b247af1efee18967fdabcc9aeba387b0b77e8cee69dcb8
+    KKN_20240512_polar_15min.nc:
+      mb: 3.538
+      sha256: 9bfe01285a202d9af906585105295c61ae7e511f0cba7cff24139f8afbc76185
+    KKN_20240513_polar_15min.nc:
+      mb: 19.256
+      sha256: caf718c3de2076a189d742b42f0e90dcbb706c0f942dc3999bc756fc015e544f
+    KKN_20240514_polar_15min.nc:
+      mb: 0.557
+      sha256: 2d2ed98ba66dd044a367a1455d1fec189dc6272fafbe005a01a361417072d476
+    KKN_20240515_polar_15min.nc:
+      mb: 4.658
+      sha256: fe6facb0ae72d8eea35cefb970d5f91a0e0b240a1a0fd46eb2997c85d45324b8
+    KKN_20240516_polar_15min.nc:
+      mb: 5.34
+      sha256: 2f9cb511269ea740eec36df2dde7eef072deb47a5995762b419074592ab39bdc
+    KKN_20240517_polar_15min.nc:
+      mb: 9.837
+      sha256: 2770467e77015c65aa6bc05c87a819bff29f188bc58d868bc4f48261eb751f81
+    KKN_20240518_polar_15min.nc:
+      mb: 3.469
+      sha256: 4b77d41b7d53531ebf35bf2dd507d6eb9cb9e4da104fbac84dc1c9a050227012
+    KKN_20240519_polar_15min.nc:
+      mb: 7.851
+      sha256: 69cdbe6c2a10fa8baec566600019a9609b76bc6a6cf729dbe2452c80e301a839
+    KKN_20240520_polar_15min.nc:
+      mb: 20.697
+      sha256: 6add80e7b419ca7e7d306de6d7283913f03ea27b459155ac522d7dddc6cff829
+    KKN_20240521_polar_15min.nc:
+      mb: 15.377
+      sha256: d7cb69fe0fcbe40b3aff22d4786a355471ebee38168d7a181fa6b7c14854537e
+    KKN_20240522_polar_15min.nc:
+      mb: 14.574
+      sha256: c63fa25477737aa96896a4a2da24cf000c63948796513cd8fa94486441af4379
+    KKN_20240523_polar_15min.nc:
+      mb: 39.818
+      sha256: 994fd073eff772b79489acb7fe15a40a1b7e89ffa3d808b8d5323b71016ee262
+    KKN_20240524_polar_15min.nc:
+      mb: 16.267
+      sha256: 1f8daafc2d9020b443b24c5cae97e81d0a0e33f478fc6dc208aef0cb58f7e167
+    KKN_20240525_polar_15min.nc:
+      mb: 8.3
+      sha256: ba32f8c23c3d06ad470f2e2e1657287fc93f033b8503045b19920044cbf06f51
+    KKN_20240526_polar_15min.nc:
+      mb: 1.772
+      sha256: 4de8e2f231ef1591ff873da978468aa4d9825b1dee290fc962790e1872d5ace4
+    KKN_20240527_polar_15min.nc:
+      mb: 1.823
+      sha256: 2d376a13673b89a6f82f7ee42effa6ef46c9bcd7d6c92be128f67ad2eb0245bb
+    KKN_20240529_polar_15min.nc:
+      mb: 3.969
+      sha256: 9f620466a9e812f538e00177d01ba47122c5d0dc3350c70f81556d2dfbcdbf15
+    KKN_20240530_polar_15min.nc:
+      mb: 3.746
+      sha256: 0e412290fa8a94ae231c860dcb68c2e67a8d0bf4690249a2fe43e283bae49dc8
+    KKN_20240531_polar_15min.nc:
+      mb: 12.918
+      sha256: e4f1e36bf65d625d23df7a9d0d31ec2d77b18c204a8cb53020d8a9019bc2d47e
+  archives:
+    KKN_May2024_labels_15min.zip:
+      mb: 1.9
+      sha256: null
+      members:
+      - KKN_20240501_labels_15min.nc
+      - KKN_20240502_labels_15min.nc
+      - KKN_20240503_labels_15min.nc
+      - KKN_20240504_labels_15min.nc
+      - KKN_20240505_labels_15min.nc
+      - KKN_20240506_labels_15min.nc
+      - KKN_20240507_labels_15min.nc
+      - KKN_20240508_labels_15min.nc
+      - KKN_20240509_labels_15min.nc
+      - KKN_20240510_labels_15min.nc
+      - KKN_20240511_labels_15min.nc
+      - KKN_20240512_labels_15min.nc
+      - KKN_20240513_labels_15min.nc
+      - KKN_20240514_labels_15min.nc
+      - KKN_20240515_labels_15min.nc
+      - KKN_20240516_labels_15min.nc
+      - KKN_20240517_labels_15min.nc
+      - KKN_20240518_labels_15min.nc
+      - KKN_20240519_labels_15min.nc
+      - KKN_20240520_labels_15min.nc
+      - KKN_20240521_labels_15min.nc
+      - KKN_20240522_labels_15min.nc
+      - KKN_20240523_labels_15min.nc
+      - KKN_20240524_labels_15min.nc
+      - KKN_20240525_labels_15min.nc
+      - KKN_20240526_labels_15min.nc
+      - KKN_20240527_labels_15min.nc
+      - KKN_20240529_labels_15min.nc
+      - KKN_20240530_labels_15min.nc
+      - KKN_20240531_labels_15min.nc
+      member_sha256:
+        KKN_20240501_labels_15min.nc: 28fa6f48f20e6a65c4855aa15113aca8e4bd3e6bc752cfe10001644bd0912e09
+        KKN_20240502_labels_15min.nc: a1674cc035324fcaf1333b021bbff0a02373250c7c33d4a45be3c3a6e1ce0984
+        KKN_20240503_labels_15min.nc: 667f08aa0d88c358545271ab0fafefba4666ac8f738becd1aabfe76d4809b85c
+        KKN_20240504_labels_15min.nc: 0bf2766c06ef0305b18834d6b035bf4201618f02e6ad983c09edd9c4a550a111
+        KKN_20240505_labels_15min.nc: a928c1245458d1508701a9f48aaf41493c71d3e57bbaa1f9d88b79724f8cbe39
+        KKN_20240506_labels_15min.nc: cf32e3ce0882c63be81e9cd3da55b337c4acc3e1c3c7447b640aa0b8b2ab850a
+        KKN_20240507_labels_15min.nc: bf40c02a36193ed4af365f821ee646e28716ef7137b6863850c9d6c1108e7ed0
+        KKN_20240508_labels_15min.nc: 48c5b662da13e5821f88ac653a7e564469d0416b70cfc9c3e17029287b2029d5
+        KKN_20240509_labels_15min.nc: 83d4532b21aab5319ba765b0eb6c826838b9bc48cf850de4912c864684faf5bc
+        KKN_20240510_labels_15min.nc: 71b8370ce1825ad523fee9c2ba3dcc9b36eac35e296966498480e05f868d5961
+        KKN_20240511_labels_15min.nc: 1d03ea44aa205b6de76b5dca2b5ba5eec1425cdc5bbaa12a38714921b85c5b8d
+        KKN_20240512_labels_15min.nc: cd6b4cba4ecabdcb9d6aaace6c94891d40b731465bc0bbbeb3f0179a17a10fa3
+        KKN_20240513_labels_15min.nc: fdfc3fc79aad4b02ba7c498560f54b574dd62dae59596868a02ae2b08c012d2b
+        KKN_20240514_labels_15min.nc: 8f59dfcc71eb6831dd0c560c3e9dec21baec3ac1993ed842c919122ca3b8ee64
+        KKN_20240515_labels_15min.nc: 6a33536c4da4504e3aed9e8eb7824c9eec8c13062e27c0dc22bd2ca029742a06
+        KKN_20240516_labels_15min.nc: bffa0c727bb6b81bbfe437ef3fbf819942fb8028a5eac2693676fc7fbd30a1f4
+        KKN_20240517_labels_15min.nc: 0b7c33003bd2e1db9273a5ff3e4c6b271d41015b5fcd5f3b9f9f4de6d1aec8cf
+        KKN_20240518_labels_15min.nc: 6ad7fad4a1199a7d9177b43bad4fc2c950d4f75b441a8d4559d346b1a72ec382
+        KKN_20240519_labels_15min.nc: d5fe48cb7f7e9d3fddeb748c04e423119f0b87a1071a8c0d9dd5327ad5e4dd98
+        KKN_20240520_labels_15min.nc: 2bb0d80a50a905ad97e4099f351aca60e62f1ade59ddc21211e6e1cf7792d927
+        KKN_20240521_labels_15min.nc: b4f602ea5b0243ee152a1f352ee73e12c789474eab14816b3c6ae9ad44795c0d
+        KKN_20240522_labels_15min.nc: 4f67bfad9150b2dcafee69f64f582ec3bb3384332590f0ff86e1415223e8c288
+        KKN_20240523_labels_15min.nc: deb9e5b5c0e9b74c7563ce8d34742da4971a19e241538bc2bf5b276c6894c877
+        KKN_20240524_labels_15min.nc: c44892c83d89815dbcb97d8615b92caf3c0bc8cf7277d2b8574e97a46bf4320f
+        KKN_20240525_labels_15min.nc: 0e466b5d7d0e8d195dac6dc452a926f88db12db3e0342eebb87fe5903d396561
+        KKN_20240526_labels_15min.nc: 226565f9651d9936c0af62be7f657f8586061697db7d112f9a8ab229ad9b1073
+        KKN_20240527_labels_15min.nc: 5fef7bd2f7882cb294c79f1d28d8db2b25837b9fab849778958d45bd48db3775
+        KKN_20240529_labels_15min.nc: 7fa551e182ccb0c0f07a8492a553b43864fe58ac610302a4d832fdf166245a34
+        KKN_20240530_labels_15min.nc: 2c3f06378cf32bf5bd6d1957fb8276b456cba2cf7aca1acf397145792d79fc1d
+        KKN_20240531_labels_15min.nc: 88a340c1202dbc3ea59653a5adc62fe287d5e7dacdc0fd74ab066a372dd6b7a1
+    KKN_May2024_labels_10min_linZ.zip:
+      mb: 2.7
+      sha256: null
+      members:
+      - KKN_20240501_labels_10min_linZ.nc
+      - KKN_20240502_labels_10min_linZ.nc
+      - KKN_20240503_labels_10min_linZ.nc
+      - KKN_20240504_labels_10min_linZ.nc
+      - KKN_20240505_labels_10min_linZ.nc
+      - KKN_20240506_labels_10min_linZ.nc
+      - KKN_20240507_labels_10min_linZ.nc
+      - KKN_20240508_labels_10min_linZ.nc
+      - KKN_20240509_labels_10min_linZ.nc
+      - KKN_20240510_labels_10min_linZ.nc
+      - KKN_20240511_labels_10min_linZ.nc
+      - KKN_20240512_labels_10min_linZ.nc
+      - KKN_20240513_labels_10min_linZ.nc
+      - KKN_20240514_labels_10min_linZ.nc
+      - KKN_20240515_labels_10min_linZ.nc
+      - KKN_20240516_labels_10min_linZ.nc
+      - KKN_20240517_labels_10min_linZ.nc
+      - KKN_20240518_labels_10min_linZ.nc
+      - KKN_20240519_labels_10min_linZ.nc
+      - KKN_20240520_labels_10min_linZ.nc
+      - KKN_20240521_labels_10min_linZ.nc
+      - KKN_20240522_labels_10min_linZ.nc
+      - KKN_20240523_labels_10min_linZ.nc
+      - KKN_20240524_labels_10min_linZ.nc
+      - KKN_20240525_labels_10min_linZ.nc
+      - KKN_20240526_labels_10min_linZ.nc
+      - KKN_20240527_labels_10min_linZ.nc
+      - KKN_20240529_labels_10min_linZ.nc
+      - KKN_20240530_labels_10min_linZ.nc
+      - KKN_20240531_labels_10min_linZ.nc
+      member_sha256:
+        KKN_20240501_labels_10min_linZ.nc: e678224d0542da2b41621a3c3a9307c8f6613d7d3d4250a3542c51884daec47e
+        KKN_20240502_labels_10min_linZ.nc: 2b27e308b86440c49d7906befe503a11f6f15a732c84918045151e487ce6b2d5
+        KKN_20240503_labels_10min_linZ.nc: 6076b8963a6b5639676673730b046b7433782108a233ee738ce6de09effedcbc
+        KKN_20240504_labels_10min_linZ.nc: ade7f7e1172a94a5ac86071fc7f698d6d2e47b559bee077b2cf0a13813e8762f
+        KKN_20240505_labels_10min_linZ.nc: 5b2f6aeb7180ca52dbe73ad3ea70cdcfd49aa2cdcec45cab85c46be531ee95f4
+        KKN_20240506_labels_10min_linZ.nc: bf60d9bedcf19d73fd741c59778f7fabc28ee970b0b98a0f3953978ff1359b07
+        KKN_20240507_labels_10min_linZ.nc: 049c0fa14be8db20734bce179aa1c80f2afd31df6b69df5079398dd67203691d
+        KKN_20240508_labels_10min_linZ.nc: 641ed2f4bf8b3a085107a4eee8b88e463404f3fc1db533ebd3cab547dc537172
+        KKN_20240509_labels_10min_linZ.nc: 1969e2ebb948639f9525d90052622802cb6b3c07df8d508c69b1f628fe04ff2b
+        KKN_20240510_labels_10min_linZ.nc: c5f588649d7690993ae839f9815707c74cac9506fb022dbed2534fb39f5be95c
+        KKN_20240511_labels_10min_linZ.nc: 00b320a02d4ca9771380386d709de9b18efc413e5f97d93f3ecdc3fbe162a125
+        KKN_20240512_labels_10min_linZ.nc: ebec47f09f5fe23efcf839aa7b577cd3a769aa443d183b8818076287d9f9d5bc
+        KKN_20240513_labels_10min_linZ.nc: 47d6841af0458781e478275efe118a26051d9f5d572d4fa88914fe2cf91427cd
+        KKN_20240514_labels_10min_linZ.nc: 5877a4ed286e267c95f1fbdb126332223446717840519cf9f658f9ed27de6b46
+        KKN_20240515_labels_10min_linZ.nc: 40b34688a20bac26a32c66b384f1b7798510cf80ea917278e85abfa4ea235515
+        KKN_20240516_labels_10min_linZ.nc: 6ad9631e444a061eb5fdb30f01f8cdcc0964e57324a0b2ee8579d7b8e0663aca
+        KKN_20240517_labels_10min_linZ.nc: 7934e98d36749a34adf186102ea909267fff0968693582af7c9c70b2c890cb24
+        KKN_20240518_labels_10min_linZ.nc: fd976266a27e78e74a18bb404fd0d44bc85122a34fb30b3c5707307ad5dbcbc1
+        KKN_20240519_labels_10min_linZ.nc: cce4c3789a5086b551970ecc12dd6836e1a27d3e7a00e4a2204d5a321b2a9aa8
+        KKN_20240520_labels_10min_linZ.nc: 3edc3b48d58adb404ec6308bb55fc80b041c1f3a491a9f7341e4699fccbae6d1
+        KKN_20240521_labels_10min_linZ.nc: 0013618bbc3cc5a7392b6705055de706ab6d1ac67ce82f4d6ce8a37dfdd1ad87
+        KKN_20240522_labels_10min_linZ.nc: 6eb467416fbe6fcb968f34c8d072d99e16e4658d9d3fad3599f5993de8aa274a
+        KKN_20240523_labels_10min_linZ.nc: aac14f9539eb0304ae806e0670e2708759c7315cb762a4f0a2c769243cabb792
+        KKN_20240524_labels_10min_linZ.nc: fe966ddf5c8f6ab44f1447a3d858a7d0064e60b58853a0c125807e7c5b4390c3
+        KKN_20240525_labels_10min_linZ.nc: 0ab13e4d84c45f63257c82602d49209b29e8132158109c6d84ddbf13e32350c4
+        KKN_20240526_labels_10min_linZ.nc: 65e10da5ab3267ca6bc08fb06ee67084415eeb350f37015d110727f06ff455c1
+        KKN_20240527_labels_10min_linZ.nc: d8f76a68c6c713a9a00d6ff95d0885906ec81702db625213c832226bd27262fc
+        KKN_20240529_labels_10min_linZ.nc: e09a16a53b865313977f1531952fb9d26529782648eee6764058f83f2cc6682d
+        KKN_20240530_labels_10min_linZ.nc: 5e7f45faafb19fac8e2770ed70744a98f983a243b50850f7ce3fa1b29d6f56dd
+        KKN_20240531_labels_10min_linZ.nc: f41baf1367dbaac50a0d38d475f398091a605318b20226637d1ea7c067dc6c94
+    KKN_May2024_labels_05min_linZ.zip:
+      mb: 5.4
+      sha256: null
+      members:
+      - KKN_20240501_labels_05min_linZ.nc
+      - KKN_20240502_labels_05min_linZ.nc
+      - KKN_20240503_labels_05min_linZ.nc
+      - KKN_20240504_labels_05min_linZ.nc
+      - KKN_20240505_labels_05min_linZ.nc
+      - KKN_20240506_labels_05min_linZ.nc
+      - KKN_20240507_labels_05min_linZ.nc
+      - KKN_20240508_labels_05min_linZ.nc
+      - KKN_20240509_labels_05min_linZ.nc
+      - KKN_20240510_labels_05min_linZ.nc
+      - KKN_20240511_labels_05min_linZ.nc
+      - KKN_20240512_labels_05min_linZ.nc
+      - KKN_20240513_labels_05min_linZ.nc
+      - KKN_20240514_labels_05min_linZ.nc
+      - KKN_20240515_labels_05min_linZ.nc
+      - KKN_20240516_labels_05min_linZ.nc
+      - KKN_20240517_labels_05min_linZ.nc
+      - KKN_20240518_labels_05min_linZ.nc
+      - KKN_20240519_labels_05min_linZ.nc
+      - KKN_20240520_labels_05min_linZ.nc
+      - KKN_20240521_labels_05min_linZ.nc
+      - KKN_20240522_labels_05min_linZ.nc
+      - KKN_20240523_labels_05min_linZ.nc
+      - KKN_20240524_labels_05min_linZ.nc
+      - KKN_20240525_labels_05min_linZ.nc
+      - KKN_20240526_labels_05min_linZ.nc
+      - KKN_20240527_labels_05min_linZ.nc
+      - KKN_20240529_labels_05min_linZ.nc
+      - KKN_20240530_labels_05min_linZ.nc
+      - KKN_20240531_labels_05min_linZ.nc
+      member_sha256:
+        KKN_20240501_labels_05min_linZ.nc: 5e4a3e0f48954ffeddf5b6e4735f73f6f144a2de6e2b3a2873f9aeb86d7ce525
+        KKN_20240502_labels_05min_linZ.nc: b6689487f50f0466514eb7c13b5b91d84dedc0827a074a6073867f5ebb4522b4
+        KKN_20240503_labels_05min_linZ.nc: 6966c7a7dcf1b6e156b0c2eb894aa545f530ad3bb105e1c664ff8164209d6803
+        KKN_20240504_labels_05min_linZ.nc: 6c00fba2bc3ab06becd968a4586238c79e2a1210c791ecc87700262b25217666
+        KKN_20240505_labels_05min_linZ.nc: 97a3f4c8e6b34d98be6130cda4abb0b7423c60e4e5dc6b4d37a7445e1dd7cf0f
+        KKN_20240506_labels_05min_linZ.nc: 79fdc18d2cf1c6f8bed86786ad0393b6b9ab4493a360dc77722c22d3968ae927
+        KKN_20240507_labels_05min_linZ.nc: 3b673e3924b3338256014bfe8c8bc48248ebb9fe810af52e878f7b430b8f292f
+        KKN_20240508_labels_05min_linZ.nc: dbe5c81ff23d5446c4337b435687f1ee834bcdc949aa43a5a93eb4f24b9f60fc
+        KKN_20240509_labels_05min_linZ.nc: 3ee6dc7b2ac519d75f8c6f4f906952c3bed5701dbf5856b9c3a4e6b8c81dfc0c
+        KKN_20240510_labels_05min_linZ.nc: f9dc22f06b8ac43580802b70e6ce2c1fbb4ee9fa2f2639bd78c45d5220ef7bab
+        KKN_20240511_labels_05min_linZ.nc: 8fd2178de4414728e979f09d14164585e6a3ce9813f403588e1f0bf7205f72d9
+        KKN_20240512_labels_05min_linZ.nc: fe5d10490655de5cdc91a178b4e2c231c145b2b8cf4eecc0014cd900d680ca6f
+        KKN_20240513_labels_05min_linZ.nc: ede8e30bd6ce245e6c24fd26a605a5769e6c785fe9562fdcf3e1e55dd2ea1a46
+        KKN_20240514_labels_05min_linZ.nc: 7ad9f065e0b6b4b08fabe063ce56b55b14c1070349dafa12a26a77f59c017ef3
+        KKN_20240515_labels_05min_linZ.nc: 50476ea8004ed765b8cde9eb789ed0e08a3f9c09e27f0a4a603fb5cf16e52ea9
+        KKN_20240516_labels_05min_linZ.nc: 94e3dd06c95d3545a3e9afcfb86bb2468b6122c1c11e0b6dcff284b83162db09
+        KKN_20240517_labels_05min_linZ.nc: b6058a951b2418023fd40d3a8b3671eaedd2c7945ae3d9b05416e0996810515b
+        KKN_20240518_labels_05min_linZ.nc: 1ae92f36cb5cf2faaedfc089af61628660e34bb617a3c04418259297d1d211c9
+        KKN_20240519_labels_05min_linZ.nc: 95846d6ee3709c058e8b9cfbe13d9688f2b2bf0a4b06838767929a2743e4b57e
+        KKN_20240520_labels_05min_linZ.nc: 1d1c59a16560a5d1a2b6b48fb8ba9eb1938cec9df44e66bc2e8914f464938de8
+        KKN_20240521_labels_05min_linZ.nc: 8442af480e67a11d3aacf7122744a8cb516ba60497dda83c889ca9a309546c21
+        KKN_20240522_labels_05min_linZ.nc: f1a964f82fb9b61ad664238b5aaa72e748480d81c3cf25de6194aca0ee05fcca
+        KKN_20240523_labels_05min_linZ.nc: 84bc8f781890f4b4bf48c6c986f831777a0d3b6571a603dbccc700e03022da7f
+        KKN_20240524_labels_05min_linZ.nc: 0dcc7591857fe8fef486d76ebc05c721bc2ecf3aa62b356789c28debb0d0fbaf
+        KKN_20240525_labels_05min_linZ.nc: c699905e05895da2827469489d504341cd08f51f9335993d3480aed7ea8b85ff
+        KKN_20240526_labels_05min_linZ.nc: 76678617d01001c835724266a0f17bca2591695bb1fd927f3318dccd1dddd739
+        KKN_20240527_labels_05min_linZ.nc: 85a747b908c17ba7f00bb613c90722426931885d10908c2f7677f79985dd4126
+        KKN_20240529_labels_05min_linZ.nc: 1a77a2e2a98b986b6f792dde6eb0652c4b8cafe17a25aabc0c21d4f820ac3eb2
+        KKN_20240530_labels_05min_linZ.nc: 01220284fb41bb652e776490fa29cd1886df811874970ade7acb7c79ba6e929f
+        KKN_20240531_labels_05min_linZ.nc: 5aa4ea065ac33e435937c0b312a12a3eeafb5515df7e64653712433c64ad2e9a
